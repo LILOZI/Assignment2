@@ -20,7 +20,7 @@ int main()
     {
         if(selected_bool[i])
         {
-            printf("%c ",items[i]);
+            printf("%s ",items[i]);
         }
     }
     printf("\n");

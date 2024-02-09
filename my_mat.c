@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include "my_mat.h"
 
-// int fw(int mat[MAT_SIZE][MAT_SIZE], int size, int i, int j);
+int fw(int mat[MAT_SIZE][MAT_SIZE], int size, int i, int j);
 
 void matValues(int mat[MAT_SIZE][MAT_SIZE], int size)
 {
@@ -96,27 +96,35 @@ int knapSack(int weights[], int values[], int selected_bool[])
         }
     }
 
-    int i = MAXITEMS, j = MAXWEIGHT;
-    while(i > 0 || j > 0)
+    size_t max = 0;
+    for(size_t i = 0; i <=MAXWEIGHT;i++)
     {
-        if(maxVal[i][j] == values[i-1] + maxVal[i-1][j- weights[i-1]])
+        if(maxVal[MAXITEMS][i] > maxVal[MAXITEMS][max])
         {
-            selected_bool[i-1] = 1;
-        }
-        else
-        {
-            
+            max = i;
         }
     }
 
-    for(size_t i = 0;i<=MAXITEMS;i++)
+    for(size_t i = MAXITEMS; i>0; i--)
     {
-        for(size_t j = 0; j<=MAXWEIGHT;j++)
+        if(maxVal[i][max] != maxVal[i-1][max])
         {
-            printf("%d    ", maxVal[i][j]);
+            selected_bool[i-1] = 1;
+            max -= weights[i-1];
         }
-        printf("\n");
+        else
+        {
+            selected_bool[i-1] = 0;
+        }
     }
+    // if(maxVal[1][weights[0] == values[0]])
+    // {
+    //     selected_bool[0] = 1;
+    // }
+    // else
+    // {
+    //     selected_bool[0] = 0;
+    // }
 
     return maxVal[MAXITEMS][MAXWEIGHT];
 }
