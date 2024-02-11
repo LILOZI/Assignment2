@@ -14,12 +14,12 @@ int main()
 
 
     printf("Maximum profit: %d\n",knapSack(weights,values,selected_bool));
-    printf("Selected items: ");
+    printf("Selected items:");
     for(size_t i = 0; i<MAXITEMS;i++)
     {
         if(selected_bool[i])
         {
-            printf("%s ",items[i]);
+            printf(" %s",items[i]);
         }
     }
     return 0;
