@@ -35,7 +35,6 @@ int fw(int mat[MAT_SIZE][MAT_SIZE], int size, int i, int j)
         {
             if(i == j)
             {
-                dist[i][i] == 0;
                 continue;
             }
             if(mat[i][j] != 0)
@@ -117,14 +116,6 @@ int knapSack(int weights[], int values[], int selected_bool[])
             selected_bool[i-1] = 0;
         }
     }
-    // if(maxVal[1][weights[0] == values[0]])
-    // {
-    //     selected_bool[0] = 1;
-    // }
-    // else
-    // {
-    //     selected_bool[0] = 0;
-    // }
 
     return maxVal[MAXITEMS][MAXWEIGHT];
 }
