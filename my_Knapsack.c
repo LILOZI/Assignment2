@@ -7,7 +7,6 @@ int main()
     int values[MAXITEMS];
     int weights[MAXITEMS];
     int selected_bool[MAXITEMS];
-    int result[MAXITEMS];
     for(size_t i = 0; i<MAXITEMS;i++)
     {
         scanf("%s %d %d",items[i], &values[i], &weights[i]);
