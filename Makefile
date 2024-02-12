@@ -9,10 +9,13 @@ FLAGS = -Wall -g
 
 all: my_graph my_Knapsack
 
-my_graph: $(OBJ_GRAPH) $(OBJ_MAT)
+my_mat.a: $(OBJ_MAT)
+	$(AR) -rcs $@ $<
+
+my_graph: $(OBJ_GRAPH) my_mat.a
 	$(CC) $(FLAGS) -o $@ $^
 
-my_Knapsack: $(OBJ_KNAPSACK) $(OBJ_MAT)
+my_Knapsack: $(OBJ_KNAPSACK) my_mat.a
 	$(CC) $(FLAGS) -o $@ $^
 
 my_mat.o: my_mat.c my_mat.h
@@ -25,6 +28,6 @@ my_Knapsack.o: my_Knapsack.c my_mat.h
 	$(CC) $(FLAGS) -c $<
 
 clean:
-	rm *.o my_graph my_Knapsack
+	rm *.o *.a my_graph my_Knapsack
 
 PHONY: clean all
